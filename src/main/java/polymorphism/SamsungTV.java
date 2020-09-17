@@ -1,8 +1,10 @@
 package polymorphism;
 
+import org.springframework.stereotype.Component;
+
+@Component // 빈 등록
 public class SamsungTV implements Tv {
 	private Speaker speaker;
-	
 	
 	public void setSpeaker(Speaker speaker) {
 		this.speaker = speaker;

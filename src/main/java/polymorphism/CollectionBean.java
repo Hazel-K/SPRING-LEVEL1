@@ -2,6 +2,9 @@ package polymorphism;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component("col") // 빈 등록
 public class CollectionBean {
 	
 	private List<String> addressList;

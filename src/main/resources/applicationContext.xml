@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<!--
@@ -12,12 +12,13 @@
 	
 	<!-- 기본으로 사용하는 패키지 등록 -->
 	<context:component-scan base-package="polymorphism"></context:component-scan>
-	 
+	 <!-- 
 	<bean id="tv" class="polymorphism.LGTV">
+	 -->
 		<!-- <constructor-arg ref="tmax"/> -->
 		<!-- <constructor-arg value="2"/>  -->
-		<property name="speaker" ref="apple"/>
-	</bean>
+		<!-- <property name="speaker" ref="apple"/>
+	</bean> -->
 	<!-- bean 태그에서 가용할 수 있는 옵션
 		기본값 : 프로그램 실행시 객체화, 싱글톤
 		lazy-init="true" 불러온 순간에만 객체화, 싱글톤
@@ -36,11 +37,15 @@
 	 	name="" 사용할 setter의 멤버필드 이름
 	 	ref="" 사용할 객체의 id
 	  -->
+	  
+	  <!-- 
 	 <bean id="speaker" class="polymorphism.AppleSpeaker" lazy-init="true"/>
 	 <bean id="tmax" class="polymorphism.TmaxSpeaker" lazy-init="true"/>
 	 <bean id="apple" class="polymorphism.AppleSpeaker" lazy-init="true"/>
+	  -->
 	 
 	 <!-- list 안에 값 넣기 -->
+	 <!-- 
 	 <bean id="col" class="polymorphism.CollectionBean">
 	 	<property name="addressList">
 	 		<list>
@@ -51,5 +56,6 @@
 	 		</list>
 	 	</property>
 	 </bean>
+	  -->
 	
 </beans>

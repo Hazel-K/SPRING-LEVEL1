@@ -1,8 +1,14 @@
 package polymorphism;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("tv") // 빈 등록
 public class LGTV implements Tv{
+	@Autowired // 중복 불가, 자리에 들어갈 bean이 있으면 자동으로 인식
+	@Qualifier("tmaxSpeaker")
 	private Speaker speaker;
-	
 	
 	public void setSpeaker(Speaker speaker) {
 		this.speaker = speaker;
