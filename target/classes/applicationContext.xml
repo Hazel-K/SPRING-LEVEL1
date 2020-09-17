@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!--
+		bean을 통해 해당 객체를 참조하여 실행하는 controller를 담당
+		Spring Container, Container라고 함 
+	 -->
+	
+	<!-- 기본으로 사용하는 패키지 등록 -->
+	<context:component-scan base-package="polymorphism"></context:component-scan>
+	 
+	<bean id="tv" class="polymorphism.LGTV">
+		<!-- <constructor-arg ref="tmax"/> -->
+		<!-- <constructor-arg value="2"/>  -->
+		<property name="speaker" ref="apple"/>
+	</bean>
+	<!-- bean 태그에서 가용할 수 있는 옵션
+		기본값 : 프로그램 실행시 객체화, 싱글톤
+		lazy-init="true" 불러온 순간에만 객체화, 싱글톤
+		scope="prototype" 불러올 때마다 객체화, 싱글톤 아님
+	 -->
+	 <!-- constructor 태그에서 가용할 수 있는 옵션
+	 	생성자 이용 시
+		ref="bean" 객체화된 bean을 참조하는 생성자를 링크
+		value="값" 특정 값을 참조하는 생성자를 링크
+		type="자료형" 특정 값의 자료형이 뭔지를 공개하는 링크
+		
+		기본적으로는 태그끼리의 순서에 관계없이 태그를 찾아내지만, 같은 자료형태를 파라미터로 쓰는 생성자가 서로 순서만 다를 경우, 해당 태그들도 순서를 따진다.
+	 -->
+	 <!-- property 태그에서 가용할 수 있는 옵션
+	 	세터 이용 시
+	 	name="" 사용할 setter의 멤버필드 이름
+	 	ref="" 사용할 객체의 id
+	  -->
+	 <bean id="speaker" class="polymorphism.AppleSpeaker" lazy-init="true"/>
+	 <bean id="tmax" class="polymorphism.TmaxSpeaker" lazy-init="true"/>
+	 <bean id="apple" class="polymorphism.AppleSpeaker" lazy-init="true"/>
+	 
+	 <!-- list 안에 값 넣기 -->
+	 <bean id="col" class="polymorphism.CollectionBean">
+	 	<property name="addressList">
+	 		<list>
+	 			<value>서울</value>
+	 			<value>대전</value>
+	 			<value>대구</value>
+	 			<value>부산</value>
+	 		</list>
+	 	</property>
+	 </bean>
+	
+</beans>
